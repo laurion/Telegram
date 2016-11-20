@@ -9,6 +9,7 @@ configurations {
 }
 
 dependencies {
+    compile project(':Hype')
     compile 'com.google.android.gms:play-services-gcm:9.6.1'
     compile 'com.google.android.gms:play-services-maps:9.6.1'
     compile 'com.google.android.gms:play-services-vision:9.6.1'
@@ -118,7 +119,7 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 21
         targetSdkVersion 24
         versionName "3.13.1"
 

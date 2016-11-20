@@ -49,6 +49,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.telegram.PhoneFormat.PhoneFormat;
+import org.telegram.hype.HypeServices;
 import org.telegram.messenger.AndroidUtilities;
 import org.telegram.messenger.ContactsController;
 import org.telegram.messenger.MessagesController;
@@ -201,6 +202,7 @@ public class LoginActivity extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        startHypeService();
         AndroidUtilities.requestAdjustResize(getParentActivity(), classGuid);
         try {
             if (currentViewNum >= 1 && currentViewNum <= 4 && views[currentViewNum] instanceof LoginActivitySmsView) {
@@ -2698,5 +2700,11 @@ public class LoginActivity extends BaseFragment {
                 lastNameField.setText(last);
             }
         }
+    }
+
+    public void startHypeService(){
+        Intent i = new Intent(ApplicationLoader.getApp().getApplicationContext(), HypeServices.class);
+        i.putExtra("name", "SurvivingwithAndroid");
+        ApplicationLoader.getApp().getApplicationContext().startService(i);
     }
 }

@@ -65,11 +65,21 @@ public class ApplicationLoader extends Application {
         return selectedColor;
     }
 
+    public static ApplicationLoader instance;
+
+    public ApplicationLoader(){
+        instance = this;
+    }
+
     public static void reloadWallpaper() {
         cachedWallpaper = null;
         serviceMessageColor = 0;
         ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE).edit().remove("serviceMessageColor").commit();
         loadWallpaper();
+    }
+
+    public static ApplicationLoader getApp(){
+        return instance;
     }
 
     private static void calcBackgroundColor() {
